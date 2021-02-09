@@ -1,0 +1,17 @@
+{{#if results.length}}
+<ul>
+  {{#each results}}
+  <li class="userResult">
+    <form action="/complete" method="POST">
+      <label>
+        <span>{{reference}}</span>
+        <span>{{result}}</span>
+        <span>{{name}}</span>
+      </label>
+    </form>
+  </li>
+  {{/each}}
+</ul>
+{{else}}
+<p>Список пуст</p>
+{{/if}}
