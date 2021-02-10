@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const daoRoutes = require('./routes/dao')
 const renderingRoutes = require('./routes/rendering')
 const { env } = require('process')
-require('dotenv').config();
+const config = require('config')
 
 const PORT = process.env.PORT || 80
 
@@ -24,10 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(daoRoutes)
 app.use(renderingRoutes)
-
 async function start() {
   try {
-    await mongoose.connect(process.env.MONGO_URL,
+    await mongoose.connect(config.get('mongoUri'),
       {
         useNewUrlParser: true,
         useFindAndModify: false

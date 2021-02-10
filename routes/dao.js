@@ -42,14 +42,13 @@ router.post('/create', async (req, res) => {
     userResult = req.result
   }
 
-    const newUser = new UserResult({
-      reference: userRef,
-      name: userName,
-      result: userResult,
-      time: getCurrentTime()
-    })
-    await newUser.save()
-  //}
+  const newUser = new UserResult({
+    reference: userRef,
+    name: userName,
+    result: userResult,
+    time: getCurrentTime()
+  })
+  await newUser.save()
 
   res.redirect('/')
 })
