@@ -25,7 +25,7 @@ app.use(renderingRoutes)
 
 async function start() {
   try {
-    await mongoose.connect('mongodb+srv://vorpalko:E4UtVCHxP3b9ux7@cluster0.c679m.mongodb.net/sn_users26',
+    await mongoose.connect('mongodb+srv://vorpalko:E4UtVCHxP3b9ux7@cluster0.c679m.mongodb.net/sn_table',
       {
         useNewUrlParser: true,
         useFindAndModify: false
