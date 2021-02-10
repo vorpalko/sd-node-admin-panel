@@ -24,14 +24,22 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(daoRoutes)
 app.use(renderingRoutes)
+
 async function start() {
   try {
-    await mongoose.connect(config.get('mongoUri'),
-      {
+    await mongoose
+    .connect(config.get('mongoUri'),{
         useNewUrlParser: true,
         useFindAndModify: false
       }
     )
+    .then(() => {
+      console.log('Connected to Mongo')
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+
     app.listen(PORT, () => {
       console.log('Server has been started...')
     })
