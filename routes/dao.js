@@ -1,12 +1,12 @@
 const express = require('express')
 const { Router } = require('express')
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser')
 const UserResult = require('../models/UserResult')
 const router = Router()
 
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 router.post('/create', async (req, res) => {
@@ -57,11 +57,10 @@ router.post('/create', async (req, res) => {
   //var token = req.param('name');
   //var geo = req.param('result');
 
-  var ref1 = req.param('reference');//req.body.reference;
-  var name1 = req.param('name');//req.body.name;
-  var result1 = req.param('result');//req.body.result;
+  var name1 = req.body.name;
+  var result1 = req.body.result;
 
-  if(nam1 != null ) {
+  if(name1 != null ) {
     userName = name1
   }
   
