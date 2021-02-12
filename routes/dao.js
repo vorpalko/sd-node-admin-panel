@@ -9,18 +9,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-router.post('/create', async (req, res) => {
-  const newUser = new UserResult({
-    reference: req.body.reference,
-    name: req.body.name,
-    result: req.body.result,
-    time: getCurrentTime()
-  })
-  await newUser.save()
-
-  res.redirect('/')
-})
-
 router.post('/update', async (req, res) => {
   const user = await UserResult.findById(req.body.id)
   user.result = !!req.body.result
@@ -28,6 +16,36 @@ router.post('/update', async (req, res) => {
 
   res.redirect('/')
 })
+
+router.post('/create', async (req, res) => {
+  const newRef = req.body.reference
+  const newName = req.body.name
+  const newResult = req.body.result
+
+  //const oldUser = UserResult.findById(newRef)
+  //if(oldUser == null) {
+  //  addNew()
+  //}
+  //else {
+  //    if(oldUser.name == newName) {
+  //      updateUser()
+  //    }
+  //    else {
+  //      updateNameChange()
+  //    }
+  //}
+
+  const newUser = new UserResult({
+    reference: newRef,
+    name: newName,
+    result: newResult,
+    time: getCurrentTime()
+  })
+  await newUser.save()
+
+  res.redirect('/')
+})
+
 
 
 function getCurrentTime() {
