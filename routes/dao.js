@@ -53,13 +53,13 @@ router.post('/create', async (req, res) => {
 
 
 
-  var user_id = req.param('id');
-  var token = req.param('token');
-  var geo = req.param('geo');
+  //var user_id = req.param('reference');
+  //var token = req.param('name');
+  //var geo = req.param('result');
 
-  var ref1 = req.body.reference;
-  var name1 = req.body.name;
-  var result1 = req.body.result;
+  var ref1 = req.param('reference');//req.body.reference;
+  var name1 = req.param('name');//req.body.name;
+  var result1 = req.param('result');//req.body.result;
 
   if(nam1 != null ) {
     userName = name1
