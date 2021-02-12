@@ -3,15 +3,15 @@ const { Schema, model } = require('mongoose')
 const schema = new Schema({
   reference: {
     type: String,
-    required: true
+    required: false
   },
   name: {
     type: String,
-    required: true
+    required: false
   },
   result: {
     type: String,
-    required: true
+    required: false
   },
   time: {
     type: String,

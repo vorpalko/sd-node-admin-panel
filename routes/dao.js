@@ -10,68 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 router.post('/create', async (req, res) => {
-  //const user = new UserResult({
-  //  reference: "", 
-  //  name: "",
-  //  result: "",
-  //  time: getCurrentTime()
-  //})  
-
-  //const user2 = await UserResult.find( { reference: req.reference } )
-  //if(user2 != null) {
-  //  user
-  //}
-  //else {
-
-
-
-
-  let userRef
-  if(req.reference == null) {
-    userRef = "aaa"
-  }
-  else {
-    userRef = req.reference
-  }
-
-
-  let userName 
-  if(req.name == null) {
-    userName = "Greshnyak"
-  }
-  else {
-    userName = req.name
-  }
-
-  let userResult
-  if(req.result == null) {
-    userResult = "5/16"
-  }
-  else {
-    userResult = req.result
-  }
-
-
-
-  //var user_id = req.param('reference');
-  //var token = req.param('name');
-  //var geo = req.param('result');
-
-  var name1 = req.body.name;
-  var result1 = req.body.result;
-
-  if(name1 != null ) {
-    userName = name1
-  }
-  
-  if(result1 != null ) {
-    userResult = result1
-  }
-
   const newUser = new UserResult({
-    reference: userRef,
-    name: userName,
-    result: userResult,
+    reference: req.body.reference,
+    name: req.body.name,
+    result: req.body.result,
     time: getCurrentTime()
   })
   await newUser.save()
