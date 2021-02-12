@@ -1,7 +1,10 @@
+const express = require('express')
 const { Router } = require('express')
 const bodyParser = require("body-parser");
 const UserResult = require('../models/UserResult')
 const router = Router()
+
+const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
